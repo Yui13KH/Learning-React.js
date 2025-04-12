@@ -18,3 +18,14 @@ Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
    ```
  
  then open whatever loaclhost port it opened it at 
+
+ ```mermaid
+ graph TD;
+    App --> Header
+    App --> Menu
+    App --> Footer
+    Menu --> Pizza
+    Footer --> isOpen
+    isOpen --> Order
+    isOpen --> ClosedMessage
+```

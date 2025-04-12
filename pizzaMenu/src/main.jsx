@@ -84,8 +84,7 @@ function Menu() {
 }
 
 function Pizza(props) {
-
-  if(props.pizzaObj.soldOut){
+  if (props.pizzaObj.soldOut) {
     return null;
   } // using early return to return entierly different components
 
@@ -111,9 +110,7 @@ function Footer() {
     <footer className="footer">
       <div className="order">
         {isOpen ? (
-          <p>
-            We're open until {closedHour}:00. Come visit us or order online!
-          </p>
+          <Order openHour={openHour}/>
         ) : (
           <p>
             We're closed now. See you between {openHour}:00 and {closedHour}:00!
@@ -123,6 +120,14 @@ function Footer() {
       </div>
     </footer>
   ); // using ternary to return 2 different components conditionally
+}
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>We're open until {props.openHour}:00. Come visit us or order online!</p>
+    </div>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
