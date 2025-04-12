@@ -1,0 +1,89 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;   
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Card Styling */
+.card {
+  width: 320px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Avatar */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Data Section */
+.data {
+  padding: 15px;
+}
+
+/* Intro Section */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Skill List */
+.skill {
+  display: inline-block;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  color: rgb(255, 19, 19);
+  text-align: center;
+  font-weight: bold;
+  text-transform: capitalize;
+  transition: background-color 0.3s ease;
+}
+
+.skill:hover {
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}

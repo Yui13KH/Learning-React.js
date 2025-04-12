@@ -68,10 +68,25 @@ function Header() {
 function Menu() {
   return (
     <main className="menu">
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => {
+          return <Pizza pizzaObj={pizza} key={pizza.name}/>;
+        })}
+      </ul>
     </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <li className="pizza">
+      <img src={props.pizzaObj.photoName} alt="focaccia pizza" />
+      <div>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price}</span>
+      </div>
+    </li>
   );
 }
 
@@ -80,15 +95,6 @@ function Footer() {
     <footer className="footer">
       <p>Copyright {new Date().getFullYear()}</p>
     </footer>
-  );
-}
-function Pizza() {
-  return (
-    <div>
-      <img src="pizzas/focaccia.jpg" alt="focaccia pizza" />
-      <h3>Focaccia</h3>
-      <p>Bread with italian olive oil and rosemary</p>
-    </div>
   );
 }
 
