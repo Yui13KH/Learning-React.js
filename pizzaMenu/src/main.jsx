@@ -70,21 +70,25 @@ function Menu() {
 
   return (
     <main className="menu">
-      {pizzas.length > 0 && (
+      {pizzas.length > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
-      )}
-      {pizzas.length === 0 && (
-        <p>We're still working on our menu. Please come back later :)</p>
+      ) : (
+        <p>We're still working on the menu</p>
       )}
     </main>
   );
 }
 
 function Pizza(props) {
+
+  if(props.pizzaObj.soldOut){
+    return null;
+  } // using early return to return entierly different components
+
   return (
     <li className="pizza">
       <img src={props.pizzaObj.photoName} alt="focaccia pizza" />
@@ -106,12 +110,11 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="order">
-        {isOpen && (
+        {isOpen ? (
           <p>
             We're open until {closedHour}:00. Come visit us or order online!
           </p>
-        )}
-        {!isOpen && (
+        ) : (
           <p>
             We're closed now. See you between {openHour}:00 and {closedHour}:00!
           </p>
@@ -119,7 +122,7 @@ function Footer() {
         <button className="btn">Order</button>
       </div>
     </footer>
-  );
+  ); // using ternary to return 2 different components conditionally
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
