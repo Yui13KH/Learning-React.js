@@ -70,12 +70,21 @@ function Menu() {
 
   return (
     <main className="menu">
+      <h2>Our Menu</h2>
+
       {pizzas.length > 0 ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            quas fugit cupiditate nisi aut, reiciendis porro vel ipsam.
+          </p>
+
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're still working on the menu</p>
       )}
@@ -83,18 +92,16 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
-  if (props.pizzaObj.soldOut) {
-    return null;
-  } // using early return to return entierly different components
-
+function Pizza({ pizzaObj }) {
   return (
-    <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt="focaccia pizza" />
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>  
+    {/* javascript mode in jsx and javascript in template literal */}
+      <img src={pizzaObj.photoName} alt="focaccia pizza" />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ? 'Sold Out' : pizzaObj.price}</span> 
+        {/* conditionally setting text */}
       </div>
     </li>
   );
@@ -110,7 +117,7 @@ function Footer() {
     <footer className="footer">
       <div className="order">
         {isOpen ? (
-          <Order openHour={openHour}/>
+          <Order openHour={openHour} />
         ) : (
           <p>
             We're closed now. See you between {openHour}:00 and {closedHour}:00!
@@ -122,10 +129,10 @@ function Footer() {
   ); // using ternary to return 2 different components conditionally
 }
 
-function Order(props) {
+function Order({ openHour }) {
   return (
     <div className="order">
-      <p>We're open until {props.openHour}:00. Come visit us or order online!</p>
+      <p>We're open until {openHour}:00. Come visit us or order online!</p>
     </div>
   );
 }
